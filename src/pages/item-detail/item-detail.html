@@ -1,0 +1,24 @@
+<ion-header>
+    <header-nav [title]="title"></header-nav>
+</ion-header>
+
+<ion-content>
+    <div class="item-profile" text-center [style.background-image]="'url(' + backdropImage + ')'"></div>
+    <ion-segment [(ngModel)]="content">
+        <ion-segment-button value="overview">Overview</ion-segment-button>
+        <ion-segment-button value="cast">Cast</ion-segment-button>
+        <ion-segment-button value="suggestion">Suggestion</ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="content">
+        <div class="item-detail" *ngSwitchCase="'overview'" padding>
+            <p>{{ overview }}</p>
+        </div>
+        <div class="item-detail" *ngSwitchCase="'cast'">
+            <credits [credits]="credits$ | async"></credits>
+        </div>
+        <div class="item-detail" *ngSwitchCase="'suggestion'">
+            <suggestions [recommendations]="recommendations$ | async" [mediaType]="mediaType"></suggestions>
+        </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,7 @@
+<ion-header>
+    <header-nav [title]="title"></header-nav>
+</ion-header>
+
+<ion-content>
+    <favorites [medias]="medias$ | async" (removeItem)="removeItem($event)" (moreInfo)="moreInfo($event)"></favorites>
+</ion-content>

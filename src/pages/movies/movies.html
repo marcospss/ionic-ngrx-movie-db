@@ -1,0 +1,7 @@
+<ion-header>
+    <header-nav [title]="title"></header-nav>
+</ion-header>
+
+<ion-content>
+    <list-media [medias]="medias$ | async" [mediaType]="mediaType" (addItem)="addItem($event)" (removeItem)="removeItem($event)" (moreInfo)="moreInfo($event)"></list-media>
+</ion-content>

@@ -1,0 +1,10 @@
+<ion-list>
+    <ion-item *ngFor="let item of recommendations.results" (click)="moreInfo(item)">
+        <ion-thumbnail item-start>
+            <img [src]="utilsProvider.posterImage(item.poster_path)" />
+        </ion-thumbnail>
+        <h2>{{ ((item.title) ? item.title : item.name) | slice:0:23 }}</h2>
+        <p>{{ item.overview | slice:0:140 }}...</p>
+        <button ion-button clear item-end>View</button>
+    </ion-item>
+</ion-list>

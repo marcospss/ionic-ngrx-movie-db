@@ -1,0 +1,37 @@
+<ion-card *ngFor="let item of medias.results">
+
+    <ion-item (click)="moreInfo.emit(item)">
+        <ion-avatar item-start>
+            <img [src]="utilsProvider.posterImage(item.poster_path)">
+        </ion-avatar>
+        <h2>{{ ((item.title) ? item.title : item.name) | slice:0:23 }}</h2>
+        <p>{{ ((item.release_date) ? item.release_date : item.first_air_date) | date: 'dd/MM/yyyy' }}</p>
+    </ion-item>
+
+    <img [src]="utilsProvider.backdropImage(item.backdrop_path)" (click)="moreInfo.emit(item)">
+
+    <ion-card-content>
+        <p>{{ item.overview | slice:0:140 }}...</p>
+    </ion-card-content>
+
+    <ion-row>
+        <ion-col text-left>
+            <button ion-button color="primary" clear small icon-start (click)="addItem.emit(item)">
+                <ion-icon name='star' isActive="false"></ion-icon>
+                Add Favorite
+            </button>
+        </ion-col>
+        <!-- <ion-col text-left>
+            <button ion-button clear small color="danger" icon-start (click)="removeItem.emit(item)">
+                <ion-icon name='trash'></ion-icon>
+                Remove Favorite
+            </button>
+        </ion-col> -->
+        <ion-col text-right>
+            <button ion-button color="primary" clear small icon-start (click)="moreInfo.emit(item)">
+                <ion-icon name='arrow-forward'></ion-icon>
+                More Info
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-card>

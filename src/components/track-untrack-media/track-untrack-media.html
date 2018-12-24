@@ -1,0 +1,13 @@
+[{{ isSelectedBookInCollection }}]
+<ion-col text-left *ngIf="!isSelectedBookInCollection">
+    <button ion-button color="primary" clear small icon-start (click)="addItem.emit(item)">
+      <ion-icon name='star' isActive="false"></ion-icon>
+      Add Favorite
+  </button>
+</ion-col>
+<ion-col text-left *ngIf="isSelectedBookInCollection">
+    <button ion-button clear small color="danger" icon-start (click)="removeItem.emit(item)">
+      <ion-icon name='trash'></ion-icon>
+      Remove Favorite
+  </button>
+</ion-col>

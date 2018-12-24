@@ -1,0 +1,8 @@
+{
+  "name": "ionic-ngrx-movie-db",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

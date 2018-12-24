@@ -1,0 +1,7 @@
+<ion-slides pager effect="cube" paginationType="progress">
+    <ion-slide *ngFor="let slide of credits.cast">
+        <img [src]="utilsProvider.profileImage(slide.profile_path)" class="slide-image" />
+        <h2>{{ slide.name }}</h2>
+        <p>{{ slide.character }}</p>
+    </ion-slide>
+</ion-slides>

@@ -1,0 +1,22 @@
+<ion-card *ngFor="let item of medias">
+    <ion-card-content>
+        <ion-card-title (click)="moreInfo.emit(item)">
+            <h2>{{ ((item.title) ? item.title : item.name) }}</h2>
+        </ion-card-title>
+    </ion-card-content>
+    <img [src]="utilsProvider.backdropImage(item.backdrop_path)" (click)="moreInfo.emit(item)" />
+    <ion-row no-padding>
+        <ion-col text-left>
+            <button ion-button color="primary" clear small icon-start (click)="moreInfo.emit(item)">
+                <ion-icon name='arrow-forward'></ion-icon>
+                More Info
+            </button>
+        </ion-col>
+        <ion-col text-right>
+            <button ion-button clear small color="danger" icon-start (click)="removeItem.emit(item)">
+                <ion-icon name='trash'></ion-icon>
+                Remove
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-card>

@@ -1,0 +1,26 @@
+<ion-header>
+    <header-nav [title]="title"></header-nav>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search for a movie or tv show"></ion-searchbar>
+    <ion-list *ngIf="medias$ | async; let medias; else resultEmpty">
+        <button ion-item (click)="openItem(item)" *ngFor="let item of medias.results">
+            <ion-thumbnail item-start>
+                <img [src]="utilsProvider.posterImage(item.poster_path)">
+            </ion-thumbnail>
+            <h2>{{ ((item.title) ? item.title : item.name) | slice:0:23 }}</h2>
+            <p>{{ ((item.release_date) ? item.release_date : item.first_air_date) | date: 'dd/MM/yyyy' }}</p>
+            <p>{{ item.overview | slice:0:140 }}...</p>
+        </button>
+    </ion-list>
+    <ng-template #resultEmpty>
+        <div class="col-12">
+            <hr />
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1 class="display-4">Seu carrinho está vazio!</h1>
+            </div>
+            <hr />
+        </div>
+    </ng-template>
+</ion-content>
